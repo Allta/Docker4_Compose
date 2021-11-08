@@ -47,26 +47,6 @@ Pour les autres : https://docs.docker.com/compose/install/
   - redis
 - Lancer le service `webui` en dépendance de `redis`. 
 
-## Exerce 3 : ID Dock 
-
-ID Dock est une application Flask qui utilise Redis comme base de données:
-`uWSGI` est un serveur python de production. 
-
-- Construire l'image `id_dock` et vérifier qu'elle tourne bien.
-- Rentrer dans le container et vérifier l'utilisateur qui lance l'application `id && whoami`
-- Vérifier que le serveur uwsgi est bien lancé
-- A la racine du project créer un fichier `docker-compose.yml`. Avec les services : 
-  - id_dock : 
-    - Port 9090
-    - Il doit builder l'image présent dans le projet
-  - dnmonster :
-    - image: amouat/dnmonster:1.0
-  - redis : 
-    - image: redis
-- Créer un réseau appelé `id_net` et ajouter tout les containers de la stack à ce réseau
-- Vérifier que l'application tourne       
-
-
 ## Exercice 4 : Stack ELKT
 
 La stack Elastic permet de centraliser tout les logs de nos containers  au même endroit, nous allons la coupler à Trafiek pour faciliter la gestion de nos containers.
