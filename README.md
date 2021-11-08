@@ -23,9 +23,12 @@ Si vous avez des problèmes sur une command utilisez `docker [command] --help`.
 ## Avant Exercice : 
 Pensez à installer `docker-compose` : 
 
+Pour Linux : 
 ```bash 
-sudo apt install docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
+
+Pour les autres : https://docs.docker.com/compose/install/ 
 
 ## Exercice 1 : Wordsmith
 
@@ -35,8 +38,16 @@ sudo apt install docker-compose
   - `docker-compose --help`
 - Stopper la stack avec une commande docker-compose 
 
+## Exerice 2 : Dockercoins
 
-## Exerce 2 : ID Dock 
+- A l'aide du fichier `ports.yml` lancer la stack docercoin via docker-compose.
+- Lancer le service `worker` en dépendance de : (Chercher sur google la dépendance entre 2 containers dans Compose)
+  - rng
+  - hasher
+  - redis
+- Lancer le service `webui` en dépendance de `redis`. 
+
+## Exerce 3 : ID Dock 
 
 ID Dock est une application Flask qui utilise Redis comme base de données:
 `uWSGI` est un serveur python de production. 
@@ -53,4 +64,24 @@ ID Dock est une application Flask qui utilise Redis comme base de données:
   - redis : 
     - image: redis
 - Créer un réseau appelé `id_net` et ajouter tout les containers de la stack à ce réseau
-- Vérifier que l'application tourne        
+- Vérifier que l'application tourne       
+
+
+## Exercice 4 : Stack ELKT
+
+La stack Elastic permet de centraliser tout les logs de nos containers  au même endroit, nous allons la coupler à Trafiek pour faciliter la gestion de nos containers.
+
+- Télécharger la configuration Filebeat : `curl -L -O https://raw.githubusercontent.com/elastic/beats/7.10/deploy/docker/filebeat.docker.yml`
+- ```
+mv filebeat.docker.yml filebeat.yml
+sudo chown root filebeat.yml
+```
+- Rajouter au docker-compose existant le service trafiek
+  - image: traefik:v2.3
+  - command: --api.insecure=true --providers.docker
+  - ports: 80 et 8080
+  - volumes: /var/run/docker.sock:/var/run/docker.sock
+- Expliquer en quelques mots le fichier `docker.sock`
+- BONUS : Expliquez pourquoi le partage de ce fichier impacte la sécurité du serveur. 
+
+
