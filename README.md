@@ -72,8 +72,7 @@ ID Dock est une application Flask qui utilise Redis comme base de données:
 La stack Elastic permet de centraliser tout les logs de nos containers  au même endroit, nous allons la coupler à Trafiek pour faciliter la gestion de nos containers.
 
 - Télécharger la configuration Filebeat : `curl -L -O https://raw.githubusercontent.com/elastic/beats/7.10/deploy/docker/filebeat.docker.yml`
-- ```
-mv filebeat.docker.yml filebeat.yml
+- ```mv filebeat.docker.yml filebeat.yml
 sudo chown root filebeat.yml
 ```
 - Rajouter au docker-compose existant le service trafiek
