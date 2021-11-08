@@ -20,7 +20,12 @@ Si vous avez des problèmes sur une command utilisez `docker [command] --help`.
 
 :raising_hand: Si vous avez des soucis n'hésitez pas à m'appeler. 
 
+## Avant Exercice : 
+Pensez à installer `docker-compose` : 
 
+```bash 
+sudo apt install docker-compose
+```
 
 ## Exercice 1 : Wordsmith
 
@@ -31,3 +36,17 @@ Si vous avez des problèmes sur une command utilisez `docker [command] --help`.
 - Stopper la stack avec une commande docker-compose 
 
 
+## Exerce 2 : ID Dock 
+
+ID Dock est une application Flask qui utilise Redis comme base de données:
+`uWSGI` est un serveur python de production. 
+
+- Construire l'image `id_dock` et vérifier qu'elle tourne bien.
+- Rentrer dans le container et vérifier l'utilisateur qui lance l'application `id && whoami`
+- Vérifier que le serveur uwsgi est bien lancé
+- A la racine du project créer un fichier `docker-compose.yml`. Avec les services : 
+  - id_dock : 
+   - Port 9090
+   - Il doit builder l'image présent dans le projet
+  -  dnmonster :
+   - fds     
