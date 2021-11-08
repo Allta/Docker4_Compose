@@ -48,7 +48,7 @@ ID Dock est une application Flask qui utilise Redis comme base de données:
   - id_dock : 
     - Port 9090
     - Il doit builder l'image présent dans le projet
-  -  dnmonster :
+  - dnmonster :
     - image: amouat/dnmonster:1.0
   - redis : 
     - image: redis
