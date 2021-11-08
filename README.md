@@ -25,6 +25,7 @@ Si vous avez des problèmes sur une command utilisez `docker [command] --help`.
 ## Exercice 1 : Wordsmith
 
 - Avec les Dockerfile présents dans chaque dossier il faut lancer la stack wordsmith avec un `docker-compose`.
+- Le service `web` doit tourner sur le port 80.
 - Checker les status de notre stack uniquement (Pas de tout les containers présent sur notre hôte. Utiliser les commandes docker-compose.)
   - `docker-compose --help`
 - Stopper la stack avec une commande docker-compose 
