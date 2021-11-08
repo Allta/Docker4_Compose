@@ -46,7 +46,7 @@ ID Dock est une application Flask qui utilise Redis comme base de données:
 - Vérifier que le serveur uwsgi est bien lancé
 - A la racine du project créer un fichier `docker-compose.yml`. Avec les services : 
   - id_dock : 
-   - Port 9090
-   - Il doit builder l'image présent dans le projet
+    - Port 9090
+    - Il doit builder l'image présent dans le projet
   -  dnmonster :
    - fds     
