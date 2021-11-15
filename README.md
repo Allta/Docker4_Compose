@@ -30,24 +30,28 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-
 
 Pour les autres : https://docs.docker.com/compose/install/ 
 
-## Exercice 1 : Wordsmith
+## Exercice 1 : Wordpress
 
-- Avec les Dockerfile présents dans chaque dossier il faut lancer la stack wordsmith avec un `docker-compose`.
-- Le service `web` doit tourner sur le port 80.
-- Checker les status de notre stack uniquement (Pas de tout les containers présent sur notre hôte. Utiliser les commandes docker-compose.)
-  - `docker-compose --help`
-- Stopper la stack avec une commande docker-compose 
+Vous souhaitez simplifier l'installation des Wordpress de vos clients.
+   
+Chaque client a besoin de : 
+- une base de données MySQL ;
+- le système de fichiers Wordpress.
 
-## Exerice 2 : Dockercoins
+Vous souhaitez faire en sorte que si le container se stop en cas de soucis, il se relance automatiquement. Pour que vous n'ayez pas besoin d'avoir à réaliser d'action. 
 
-- A l'aide du fichier `ports.yml` lancer la stack docercoin via docker-compose.
-- Lancer le service `worker` en dépendance de : (Chercher sur google la dépendance entre 2 containers dans Compose)
-  - rng
-  - hasher
-  - redis
-- Lancer le service `webui` en dépendance de `redis`. 
+Dans votre premier service `db` il vous faudra : 
 
-## Exercice 4 : Stack ELKT
+- qu'il redémarre automatiquement en cas de crash
+- Faire un volume persistent pour sauvegarder les données du site Wordpress dans un fichier dédié pour un client
+- Définir en tant que d'envvar le `Username`, `Password`, `Databse name`, `Root password`
+
+Dans le second service `Wordpress` il faudra : 
+- Le container WP doit démarrer si le container `db` démarre
+- Le WP devra être accessible depuis le port 8000
+- Il faudra renseigner en variable d'environnement les informations nécessaire pour se connecter à la base de données
+
+## Exercice 2 : Stack ELKT
 
 La stack Elastic permet de centraliser tout les logs de nos containers  au même endroit, nous allons la coupler à Trafiek pour faciliter la gestion de nos containers.
 
